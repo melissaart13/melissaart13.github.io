@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_reg.css">
+    <title>Registrarse</title>
+    <script>
+        function validarDNI() {
+          var dni = document.getElementById("dni").value;
+          var letra = dni.charAt(dni.length-1);
+          var numeros = dni.substring(0, dni.length-1);
+          if (numeros.length != 8 || isNaN(numeros)) {
+            alert("El DNI debe tener 8 números");
+            return false;
+          }
+          var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+          var indice = numeros % 23;
+          var letra_correcta = letras.charAt(indice);
+          if (letra_correcta != letra.toUpperCase()) {
+            alert("La letra del DNI no es correcta");
+            return false;
+          }
+          return true;
+        }
+        
+      </script>
+</head>
+<body>
+    <form action="" class="formulario" id="ingreso">
+      <header class="titulo">
+        <h1>Registrarse</h1>
+        <a href="index3.html" class="volver">VOLVER AL INICIO</a>
+      </header>
+      <h3>Ingrese sus datos</h3>
+      
+      <div id="msg"></div>
+      <!-- Mensajes de Verificación -->
+      <div id="error" class="alert alert-danger ocultar" role="alert">
+          Las Contraseñas no coinciden, vuelve a intentar !
+      </div>
+      <div id="ok" class="alert alert-success ocultar" role="alert">
+          Las Contraseñas coinciden ! (Procesando formulario ... )
+      </div>
+      <!-- Fin Mensajes de Verificación -->
+
+      <div class="forma">
+        <div>
+          <label for="name" class="datos">Nombre 
+          <input type="text" class="form-data" name="name" id="name" required></label>
+
+          <label for="surname" class="datos">Apellidos 
+          <input type="text" class="form-data" name="surname" id="surname"></label>
+
+          <label for="dni" class="datos">DNI 
+          <input type="text" class="form-data" name="dni" id="dni" maxlength="10" minlength="9"></label>
+        
+          <label for="years" class="datos">Edad 
+          <input type="number" class="form-data" name="years" id="years" min="1" max="98"></label>  
+                  
+          <label for="telf" class="datos">Teléfono  
+          <input type="text" class="form-data" name="telf" id="telf" maxlength="10"></label>
+
+        </div>
+        <div>
+
+          <label for="direccion" class="datos">Dirección 
+          <input type="text" class="form-data" name="direccion" id="direccion"></label>
+
+          <label for="piso" class="datos">Piso-puerta 
+          <input type="text" class="form-data" name="piso" id="piso" maxlength="10"></label>
+
+          <label for="cp" class="datos">Código Postal 
+          <input type="text" class="form-data" name="cp" id="cp" maxlength="6"></label>
+        
+          <label for="gender" class="datos">Género
+            <select name="gender" id="gender">
+              <option value="male">Masculino</option>
+              <option value="female">Femenino</option>
+              <option value="other">Otros</option>
+            </select>      
+          </label>
+        </div>
+        <div>
+          <label for="mail" class="datos">Correo electrónico 
+          <input type="email" class="form-data" name="mail" id="mail" maxlength="40"></label>
+          
+          <label for="pass" class="datos">Contraseña 
+          <input type="password" class="form-data" name="pass" id="pass" pattern="[A-Za-z0-9@#$%]{8,20}" title="Una contraseña válida es una cadena con una longitud entre 8 y 20 caracteres, donde cada uno consiste en una letra mayúscula o minúscula, un dígito, o los símboloss '@', '#', '$' y '%'"  required></label>
+
+          <label for="confirm-pass" class="datos">Confirme Contraseña
+          <input type="password" class="form-data" name="confirm-pass" id="confirm-pass"></label>
+        </div>
+        
+        
+        
+
+      <div class="botones">
+        <fieldset class="bt1">
+          <input type="submit" class="submit" value="Registrar" onclick="validarDNI(), validarConfirmPass()">
+        </fieldset>
+        <fieldset class="bt2">
+          <input type="reset" class="borrar" value="Borrar datos">
+        </fieldset>
+      </div>
+      </div>
+      
+
+      <script>
+        function inicializarAutocompletado() {
+          var direccionInput = document.getElementById("direccion");
+          var opciones = {
+            types: ["address"]
+          };
+          
+          var autocompletado = new google.maps.places.Autocomplete(direccionInput, opciones);
+          
+          autocompletado.addListener("place_changed", function() {
+            var lugar = autocompletado.getPlace();
+            console.log(lugar);
+            // Hacer algo con el lugar seleccionado
+          });
+        }
+        </script>
+        <script>
+          function validarConfirmPass(){
+            // Ontenemos los valores de los campos de contraseñas 
+              pass1 = document.getElementById('pass');
+              pass2 = document.getElementById('confirm-pass');
+          
+              // Verificamos si las constraseñas no coinciden 
+              if (pass1.value != pass2.value) {
+          
+                  // Si las constraseñas no coinciden mostramos un mensaje 
+                  document.getElementById("error").classList.add("mostrar");
+          
+                  return false;
+              } else {
+          
+                  // Si las contraseñas coinciden ocultamos el mensaje de error
+                  document.getElementById("error").classList.remove("mostrar");
+          
+                  // Mostramos un mensaje mencionando que las Contraseñas coinciden 
+                  document.getElementById("ok").classList.remove("ocultar");
+          
+                  // Desabilitamos el botón de login 
+                  document.getElementById("registrar").disabled = true;
+          
+                  // Refrescamos la página (Simulación de envío del formulario) 
+                  setTimeout(function() {
+                      location.reload();
+                  }, 3000);
+          
+                  return true;
+              }
+          }
+          
+        </script>
+        <script>
+          const form = document.getElementById("ingreso");
+
+          form.addEventListener("submit", function(event){
+            event.preventDefault();
+            console.log(event);
+            alert("Se detecto el envio de un formulario");
+          });
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2Ur8iqnDNNqX-WCjpjsX8xnW9muQjGw&libraries=places&callback=inicializarAutocompletado"></script>
+  </form>
+  
+    
+    
+    
+</body>
+</html>

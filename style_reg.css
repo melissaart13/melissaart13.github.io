@@ -1,0 +1,199 @@
+*{
+    margin:0;
+    padding: 0;
+    
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+form{
+    padding: 0;
+    font-family: system-ui;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+header{
+    height: 100px;
+    background: #a13535;
+    padding: 0 50px;
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+}
+header a{
+    color:white;
+    width: 800;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+}
+h3{
+    padding: 20px 50px;
+    text-align: justify;
+    text-transform: uppercase;
+    color:#a13535;
+
+}
+.forma{
+    display:block;
+    padding: 0 50px;
+    width: 100%;
+}
+.form-data{
+    margin: 10px 0;
+    margin-right: 8px;
+    padding: 5px 12px;
+    width: 20%;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 540;
+    border-color: #a13535;
+    border-radius: 3px;
+}
+.datos{
+   text-transform: uppercase;
+   margin: 10px 0;
+   font-family: system-ui;
+   font-size: 18px;
+   font-weight: 500;
+
+}
+p{
+    text-transform: uppercase;
+}
+.gender{
+    padding: 8px 0;
+}
+.submit, .borrar{
+    background-color: #a13535;
+    color:rgb(255, 255, 253);
+    font-weight: 400;
+    padding: 10px 20px;
+    width: auto;
+    align-items: center;
+    font-family: monospace;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 2px rgba(0,0,0,0.3);
+    cursor:pointer;
+    border:none;
+    margin-right: 50px;
+
+}
+.botones{
+    display: flex;
+    flex-direction: row;
+    border: none;
+    margin: 20px 0;
+
+}
+.bt1{
+    display: flex;
+    flex-direction: row;
+    border: none;
+}
+.bt2{
+    display: flex;
+    flex-direction: row ;
+    border:none;
+}
+#pass{
+    width: 10%;
+}
+#confirm-pass{
+    width: 10%;
+}
+#years{
+    width:70px;
+}
+#dni, #telf{
+    width: 160px;
+}
+#cp, #piso{
+    width: 120px;
+}
+select{
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    margin: 0 10px;
+    background:#a73636;
+    color:white;
+    font-weight: 500;
+}
+@media(max-width: 480px){
+    form{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+    header{
+        width: 100%;
+        display: flex;
+    }
+    header a{
+        width: 40%;
+        display: flex;
+        padding-right: 0;
+        padding-left: 30px;
+        text-align: center;
+    }
+    .form-data, .datos{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+    #pass{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+    #confirm-pass{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+    #years{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+    }
+    #dni, #telf{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+    #cp, #piso{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+    select{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        margin:0;
+    }
+    .botones{
+        margin-bottom: 30px;
+        box-sizing: border-box;
+    }
+    .bt1, .bt2{
+        display: flex;
+        flex-direction: row;
+    }
+    .bt2{
+        margin-left: -10px;
+    }
+
+    
+
+}
