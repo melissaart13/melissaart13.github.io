@@ -26,6 +26,7 @@
         }
         
       </script>
+      
 </head>
 <body>
     <form action="" class="formulario" id="ingreso">
@@ -34,16 +35,6 @@
         <a href="index3.html" class="volver">VOLVER AL INICIO</a>
       </header>
       <h3>Ingrese sus datos</h3>
-      
-      <div id="msg"></div>
-      <!-- Mensajes de Verificación -->
-      <div id="error" class="alert alert-danger ocultar" role="alert">
-          Las Contraseñas no coinciden, vuelve a intentar !
-      </div>
-      <div id="ok" class="alert alert-success ocultar" role="alert">
-          Las Contraseñas coinciden ! (Procesando formulario ... )
-      </div>
-      <!-- Fin Mensajes de Verificación -->
 
       <div class="forma">
         <div>
@@ -87,7 +78,7 @@
           <input type="email" class="form-data" name="mail" id="mail" maxlength="40"></label>
           
           <label for="pass" class="datos">Contraseña 
-          <input type="password" class="form-data" name="pass" id="pass" pattern="[A-Za-z0-9@#$%]{8,20}" title="Una contraseña válida es una cadena con una longitud entre 8 y 20 caracteres, donde cada uno consiste en una letra mayúscula o minúscula, un dígito, o los símboloss '@', '#', '$' y '%'"  required></label>
+          <input type="password" class="form-data" name="pass" id="pass" pattern="[A-Za-z0-9@#$%]{6,20}" title="Una contraseña válida debe contener entre 6 y 20 caracteres, una letra mayúscula o minúscula, un dígito, o los símboloss '@', '#', '$' y '%'"  required></label>
 
           <label for="confirm-pass" class="datos">Confirme Contraseña
           <input type="password" class="form-data" name="confirm-pass" id="confirm-pass"></label>
@@ -106,6 +97,21 @@
       </div>
       </div>
       
+      <script>
+        function validarConfirmPass(){
+          
+            var pass1 = document.getElementById("pass");
+            var pass2 = document.getElementById("confirm-pass");
+        
+            if (pass1 != pass2){
+              alert("Las contraseñas no coinciden");
+              return false;
+            }else{
+              return true;
+            } 
+        }
+        
+      </script>
 
       <script>
         function inicializarAutocompletado() {
@@ -123,50 +129,8 @@
           });
         }
         </script>
-        <script>
-          function validarConfirmPass(){
-            // Ontenemos los valores de los campos de contraseñas 
-              pass1 = document.getElementById('pass');
-              pass2 = document.getElementById('confirm-pass');
-          
-              // Verificamos si las constraseñas no coinciden 
-              if (pass1.value != pass2.value) {
-          
-                  // Si las constraseñas no coinciden mostramos un mensaje 
-                  document.getElementById("error").classList.add("mostrar");
-          
-                  return false;
-              } else {
-          
-                  // Si las contraseñas coinciden ocultamos el mensaje de error
-                  document.getElementById("error").classList.remove("mostrar");
-          
-                  // Mostramos un mensaje mencionando que las Contraseñas coinciden 
-                  document.getElementById("ok").classList.remove("ocultar");
-          
-                  // Desabilitamos el botón de login 
-                  document.getElementById("registrar").disabled = true;
-          
-                  // Refrescamos la página (Simulación de envío del formulario) 
-                  setTimeout(function() {
-                      location.reload();
-                  }, 3000);
-          
-                  return true;
-              }
-          }
-          
-        </script>
-        <script>
-          const form = document.getElementById("ingreso");
-
-          form.addEventListener("submit", function(event){
-            event.preventDefault();
-            console.log(event);
-            alert("Se detecto el envio de un formulario");
-          });
-
-        </script>
+        
+        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2Ur8iqnDNNqX-WCjpjsX8xnW9muQjGw&libraries=places&callback=inicializarAutocompletado"></script>
   </form>
   
