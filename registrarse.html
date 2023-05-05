@@ -26,6 +26,21 @@
         }
         
       </script>
+    <script>
+        function validarConfirmPass(){
+          
+            var pass1 = document.getElementById("pass");
+            var pass2 = document.getElementById("confirm-pass");
+        
+            if (pass1 != pass2){
+              alert("Las contraseñas no coinciden");
+              return false;
+            }else{
+              return true;
+            } 
+        }
+        
+      </script>
       
 </head>
 <body>
@@ -97,21 +112,7 @@
       </div>
       </div>
       
-      <script>
-        function validarConfirmPass(){
-          
-            var pass1 = document.getElementById("pass");
-            var pass2 = document.getElementById("confirm-pass");
-        
-            if (pass1 != pass2){
-              alert("Las contraseñas no coinciden");
-              return false;
-            }else{
-              return true;
-            } 
-        }
-        
-      </script>
+      
 
       <script>
         function inicializarAutocompletado() {
